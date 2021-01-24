@@ -1,0 +1,6 @@
+#!/bin/bash
+gcloud config set run/region us-central1
+gcloud config set run/platform managed
+gcloud config set project dear-blueno-bot
+gcloud builds submit --tag gcr.io/dear-blueno-bot/generate
+gcloud beta run deploy generate --image gcr.io/dear-blueno-bot/generate --allow-unauthenticated
