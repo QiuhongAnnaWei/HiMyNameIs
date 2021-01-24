@@ -1,38 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title>Hi, my name is...</title>
-    <link rel="shortcut icon" type="image/png" href="./wave.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+  <meta charset="utf-8">
+  <title>Hi, my name is...</title>
+  <link rel="shortcut icon" type="image/png" href="./wave.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
 
 <body>
-<div class="app">
-  <div class="nametag">
-    <div class="nametag-top">
-      <h1>👋 Hi, my name is...</h1>
-    </div>
-    <div class="nametag-middle">
-      <span id="name" class="name">Sample</span>
-    </div>
-    <div class="nametag-bottom">
-      <label for="prefix">
-        Prefix:
-        <input class="prefix" name="prefix" id="prefix" type="text"/>
-      </label>
-      <label for="temperature">
-        Uniqueness (/100):
-        <input class="temperature" name="temperature" id="temperature" type="number"/>
-      </label>
-      <button onclick="generate()" class="generate">Generate</button>
+  <div class="app">
+    <div class="nametag">
+      <div class="nametag-top">
+        <h1>👋 Hi, my name is...</h1>
+      </div>
+      <div class="nametag-middle">
+        <span id="name" class="name">Sample</span>
+      </div>
+      <div class="nametag-middle-bottom">
+        <label for="prefix">
+          Prefix:
+          <input class="prefix" name="prefix" id="prefix" type="text" />
+        </label>
+        <label for="temperature">
+          Uniqueness (/100):
+          <input class="temperature" name="temperature" id="temperature" type="number" />
+        </label>
+      </div>
+
+      <div class="nametag-bottom">
+        <div style="display: flex; flex-direction: column;">
+          <label for="prefix">
+            Similar word:
+            <input class="prefix" name="prefix" id="prefix" type="text" />
+          </label>
+        </div>
+        <button onclick="generate()" class="generate">Generate</button>
+      </div>
     </div>
   </div>
-</div>
-<footer>
-  <a href="https://github.com/QiuhongAnnaWei/hackbrown2021" target="_blank">[Source]</a>
-</footer>
+  <footer>
+    <a href="https://github.com/QiuhongAnnaWei/hackbrown2021" target="_blank">[Source]</a>
+  </footer>
 </body>
+
 </html>

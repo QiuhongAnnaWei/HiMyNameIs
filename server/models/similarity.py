@@ -30,6 +30,15 @@ def soundex(query: str):
 
     to_replace = {('b', 'f', 'p', 'v'): 1, ('c', 'g', 'j', 'k', 'q', 's', 'x', 'z'): 2,
                   ('d', 't'): 3, ('l',): 4, ('m', 'n'): 5, ('r',): 6}
+    lst = []
+    for group, value in to_replace.items():
+        if first_letter in group:
+            if first_letter:
+                lst.append(value)
+            else:
+                lst.append(first_letter)
+
+
 
     first_letter = [value if first_letter else first_letter for group, value in to_replace.items()
                     if first_letter in group]
