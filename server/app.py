@@ -7,7 +7,8 @@ app = Flask(__name__)
 
 @app.route("/generate")
 def generateRoute():
-    return json.dumps(generateOne(request.args.get('prefix')))
+    return "backend"
+    # return json.dumps(generateOne(request.args.get('prefix')))
 
 @app.route("/health")
 def healthRoute():
