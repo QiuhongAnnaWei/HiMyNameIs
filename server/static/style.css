@@ -53,6 +53,16 @@ div.nametag-middle > span.name {
   font-size: 4rem;
 }
 
+div.nametag-middle-bottom {
+  background-color: #A31621;
+  color: white;
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
 div.nametag-bottom {
   background-color: #A31621;
   color: white;
@@ -61,10 +71,17 @@ div.nametag-bottom {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 div.nametag-bottom > button.generate {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 10px;
+  padding-left: 10px;
+} 
+
+div.nametag-middle-bottom > button.generate {
   padding: 5px 10px;
   border: none;
   border-radius: 10px;
