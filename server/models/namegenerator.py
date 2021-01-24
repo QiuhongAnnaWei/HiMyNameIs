@@ -26,22 +26,7 @@ def generateText():
                             max_gen_length=max_gen_length) # 300
     # files.download(gen_file)
 
-def generateOne(pre, temp):
-    model_name = 'allnames2015-'
-    dirpath = './models/allnames2015-/' # from server/
-    textgen = textgenrnn(weights_path=f'{dirpath}{model_name}_weights.hdf5',
-                        vocab_path=f'{dirpath}/{model_name}_vocab.json',
-                        config_path=f'{dirpath}/{model_name}_config.json')
-    return textgen.generate(temperature=temp, prefix=pre, n=1, max_gen_length=100, return_as_list=True)[0]
-        
 
-
-# if __name__=="__main__":
-
-### Generate to file
-    # timestring = datetime.now().strftime('%Y%m%d_%H%M%S')
-    # gen_file = 'temp{}_pre{}_{}.txt'.format(temperature, prefix, timestring)
-    # textgen.generate_to_file(gen_file, temperature=temperature, prefix=prefix, n=2,  max_gen_length=100)
 
 ### Config
     # model_cfg = {
@@ -64,7 +49,6 @@ def generateOne(pre, temp):
     # }
 
 
-
 ### training
     # textgen = textgenrnn(name=model_name)
     # file_name = "allnames2015-.txt"
@@ -85,3 +69,9 @@ def generateOne(pre, temp):
     #     max_length=model_cfg['max_length'],
     #     dim_embeddings=100,
     #     word_level=model_cfg['word_level'])
+
+
+### Generate to file
+    # timestring = datetime.now().strftime('%Y%m%d_%H%M%S')
+    # gen_file = 'temp{}_pre{}_{}.txt'.format(temperature, prefix, timestring)
+    # textgen.generate_to_file(gen_file, temperature=temperature, prefix=prefix, n=2,  max_gen_length=100)
