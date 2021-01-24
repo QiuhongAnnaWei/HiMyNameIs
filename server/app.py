@@ -1,14 +1,19 @@
 import os
 import json
-from flask import Flask, request
+from flask import Flask, request, send_file
 from generate import generateOne
 
-app = Flask(__name__)
+app = Flask(__name__,
+            static_url_path='', 
+            static_folder='./static',)
+
+@app.route("/", methods=['GET'])
+def home():
+  return send_file("./static/index.html")
 
 @app.route("/generate")
 def generateRoute():
-    return "backend"
-    # return json.dumps(generateOne(request.args.get('prefix')))
+    return json.dumps(generateOne(request.args.get('prefix')))
 
 @app.route("/health")
 def healthRoute():
