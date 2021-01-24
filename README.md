@@ -1,7 +1,8 @@
 # hackbrown2021
 
-### To run:  
-`cd` into server/  
+### To run:
+From the project directory:
+`cd server`  
 `pip3 install -r requirements.txt`  
 `python3 app.py`  
 
