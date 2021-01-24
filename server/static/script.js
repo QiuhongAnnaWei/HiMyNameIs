@@ -1,8 +1,5 @@
-const URL = "http://localhost:5000/generate"
-const NAMES = ["Stacy", "Leonardo", "Kyle", "Cookie"]
-
 function generate() {
-  fetch(URL, {
+  fetch("/generate", {
     method: 'GET'
   })
   .then(data => {
@@ -13,9 +10,4 @@ function generate() {
     document.querySelector("#name").innerHTML = text
   })
   .catch(err => console.log(err))
-
-}
-
-function generateDummy() {
-  document.querySelector("#name").innerHTML = NAMES[Math.floor(Math.random() * NAMES.length)]
 }
