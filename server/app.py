@@ -9,9 +9,13 @@ app = Flask(__name__, static_url_path='', static_folder='./static',)
 def home():
   return send_file("./static/index.html")
 
-@app.route("/generate")
+@app.route('/generate', methods=['GET', 'POST'])
 def generateRoute():
-    return json.dumps(generateOne(request.args.get('prefix')))
+    if request.method == "POST":
+        print(request) # <Request 'http://localhost:5000/generate' [POST]>
+        content = request.json
+        print("content", content) #content None
+        return json.dumps(generateOne(content['prefix'], content['temperature']))
 
 @app.route("/health")
 def healthRoute():

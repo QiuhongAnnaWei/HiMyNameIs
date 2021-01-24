@@ -1,8 +1,13 @@
 from textgenrnn import textgenrnn
 
-def generateOne(pre):
-    textgen = textgenrnn(weights_path='./models/dearblueno_weights.hdf5',
-        vocab_path='./models/dearblueno_vocab.json',
-        config_path='./models/dearblueno_config.json',
-        name='dearblueno')
-    return textgen.generate(temperature=0.5, prefix=pre, return_as_list=True)[0]
+def generateOne(pre, temp):
+    p = None if pre=="" else pre
+    t = 0.5 if temp==0 else temp
+    model_name = 'allnames2015-'
+    dirpath = './models/allnames2015-/' # from server/
+    textgen = textgenrnn(weights_path=f'{dirpath}{model_name}_weights.hdf5',
+                        vocab_path=f'{dirpath}/{model_name}_vocab.json',
+                        config_path=f'{dirpath}/{model_name}_config.json')
+    print("p", p)
+    print("t", t)
+    return textgen.generate(temperature=t, prefix=p, n=1, max_gen_length=100, return_as_list=True)[0]

@@ -1,13 +1,18 @@
 function generate() {
+  const postParameters = {
+    prefix: document.querySelector("#prefix").value,
+    temperature: document.querySelector("#temperature").value/100
+  };
+  console.log("postParameters", postParameters)
   fetch("/generate", {
-    method: 'GET'
+    method: 'POST',
+    headers:{'Content-Type': 'application/json'},
+    body: JSON.stringify(postParameters)
   })
   .then(data => {
-    return data.text()
-  })
-  .then(text => {
-    console.log(text)
-    document.querySelector("#name").innerHTML = text
+    console.log("data", data)
+    console.log("data.json()", data.json())
+    document.querySelector("#name").innerHTML = data.text()
   })
   .catch(err => console.log(err))
 }
