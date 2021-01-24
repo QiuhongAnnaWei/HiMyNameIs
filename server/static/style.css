@@ -77,8 +77,10 @@ div.nametag-bottom {
 div.nametag-bottom > button.generate {
   padding: 5px 10px;
   border: none;
+  font-size: 20px;
   border-radius: 10px;
   padding-left: 10px;
+  margin-right: 75px;
 } 
 
 div.nametag-middle-bottom > button.generate {
