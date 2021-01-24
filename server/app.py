@@ -13,7 +13,7 @@ def home():
 def generateRoute():
     if request.method == "POST":
         content = request.get_json()
-        return json.dumps(generateOne(content['prefix'], content['temperature']))
+        return json.dumps(generateOne(content['prefix'], content['temperature'], content['similar']))
 
 @app.route("/health")
 def healthRoute():

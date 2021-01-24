@@ -1,7 +1,8 @@
 function generate() {
   const postParameters = {
     prefix: document.querySelector("#prefix").value,
-    temperature: document.querySelector("#temperature").value/100
+    temperature: document.querySelector("#temperature").value/100,
+    similar: document.querySelector("#similar").value
   };
   console.log("postParameters", postParameters)
   fetch('/generate', {

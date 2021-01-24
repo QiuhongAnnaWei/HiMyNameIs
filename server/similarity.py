@@ -72,15 +72,15 @@ def bagofwords(wordvec):
     return bow
 
 def soundex_sim(word1soundex, word2soundex):
-    if int(word1soundex[1:]) == 0 or int(word1soundex[2:]) == 0:
+    if int( "".join([str(l) for l in word1soundex[1:]]) ) == 0 or int( "".join([str(l) for l in word2soundex[1:]]) )==0:
         return 0
     vec1 = [int(char) for char in word1soundex[1:]]
     vec2 = [int(char) for char in word2soundex[1:]]
-    print("soundex_sim: vec1", vec1, "| vec2", vec2)
+    # print("soundex_sim: vec1", vec1, "| vec2", vec2)
     return cosine_sim(vec1, vec2)
 
 def soundexbow_sim(word1soundex, word2soundex):
-    if int(word1soundex[1:]) == 0 or int(word1soundex[2:]) == 0:
+    if int( "".join([str(l) for l in word1soundex[1:]]) ) == 0 or int( "".join([str(l) for l in word2soundex[1:]]) )==0:
         return 0
     if len(word1soundex) > len(word2soundex):
         for i in range(len(word1soundex)-len(word2soundex)):
@@ -88,18 +88,36 @@ def soundexbow_sim(word1soundex, word2soundex):
     elif len(word2soundex) > len(word1soundex):
         for i in range(len(word2soundex)-len(word1soundex)):
             word1soundex.append(0)
-    print("soundexbow_sim: word1soundex", word1soundex, "| word2soundex", word2soundex)
+    # print("soundexbow_sim: word1soundex", word1soundex, "| word2soundex", word2soundex)
     vec1 = bagofwords([int(char) for char in word1soundex[1:]])
     vec2 = bagofwords([int(char) for char in word2soundex[1:]])
-    print("soundexbow_sim: vec1", vec1, "| vec2", vec2)
+    # print("soundexbow_sim: vec1", vec1, "| vec2", vec2)
     return cosine_sim(vec1, vec2)
+
+def sortBySim(namesList, givenName):
+    # print("namesList before", namesList)
+    namesList.sort(key=lambda n: soundex_sim(soundex(n, True), soundex(givenName, True))+soundexbow_sim(soundex(n, False), soundex(givenName, False)), reverse=True)
+    # print("namesList after", namesList)
+    return namesList
+
+# def sim(word1, word2):
+#     return soundex_sim(soundex(word1, True), soundex(word2, True))) + soundexbow_sim(soundex(word1, False), soundex(word2, False))
+
+# def csvSorting(csvfp):
+#     if csvfp.find("(") == -1: # first csv downloaded
+#         return 0
+#     else:
+#         return int(csvfp[csvfp.find("(")+1 : csvfp.find(")")])
+# csvfilepaths.sort(key=csvSorting, reverse=True) # key=lambda csvfp: int(csvfp[csvfp.find("(")+1 : csvfp.find(")")])
 
 
 if __name__=="__main__":
-    word1 = "a"
-    word2 = "ae"
-    print(word1, soundex(word1, True))
-    print(word2, soundex(word2, True))
-    print("soundex_sim", soundex_sim(soundex(word1, True), soundex(word2, True)))
-    print("soundexbow_sim", soundexbow_sim(soundex(word1, False), soundex(word2, False)))
+    # word1 = "a"
+    # word2 = "ae"
+    # print(word1, soundex(word1, True))
+    # print(word2, soundex(word2, True))
+    # print("soundex_sim", soundex_sim(soundex(word1, True), soundex(word2, True)))
+    # print("soundexbow_sim", soundexbow_sim(soundex(word1, False), soundex(word2, False)))
+    word2soundex = ['p', 0,0,0]
+    print(int("".join([str(l) for l in word2soundex[1:]])))
 
